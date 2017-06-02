@@ -1,23 +1,43 @@
+var loading = true;
 var jumpMan;
 var song;
+var eggs; // = [];
 
-function preload(){
-  song = loadSound('Music/RunningMusic.ogg')
+// function preload(){
+//
+// }
+
+function load(){
+  song.loop();
+  loading = false;
+}
+
+function loadingScreen(){
+  textAlign(CENTER);
+  textSize(24);
+  text("LOADING", width/2, height/2);
 }
 
 function setup(){
   createCanvas(600,600);
-  song.loop();
+  song = loadSound('Music/RunningMusic.ogg', load);
   jumpMan = new Character();
+  eggs = new Egg();
 }
 
 function draw(){
   background(51);
 
-  move();
-  jumpMan.move();
-  jumpMan.show();
-
+  if(loading){
+    loadingScreen();
+  }
+  else{
+    move();
+    jumpMan.move();
+    jumpMan.show();
+    jumpMan.grab(eggs);
+    eggs.show();
+  }
 }
 
 function move(){

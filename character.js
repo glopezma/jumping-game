@@ -35,8 +35,18 @@ function Character(){
   }
 
   this.jump = function(){
-    if(this.yvel === 0 ){
+    // if(this.yvel === 0 ){
       this.yvel += this.lift;
+    // }
+  }
+
+  this.grab = function(egg){
+    if(dist(this.x, egg.x, this.y, egg.y)<300){
+      egg.taken=true;
+    }
+    if(dist(this.x, egg.x, this.y, egg.y)>300){
+      egg.taken = false;
     }
   }
+
 }
