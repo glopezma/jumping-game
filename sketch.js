@@ -1,11 +1,13 @@
 var jumpMan;
+var song;
 
 function preload(){
-
+  song = loadSound('Music/RunningMusic.ogg')
 }
 
 function setup(){
   createCanvas(600,600);
+  song.loop();
   jumpMan = new Character();
 }
 
