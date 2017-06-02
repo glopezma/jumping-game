@@ -2,6 +2,7 @@ var loading = true;
 var jumpMan;
 var song;
 var eggs; // = [];
+var score;
 
 // function preload(){
 //
@@ -23,6 +24,7 @@ function setup(){
   song = loadSound('Music/RunningMusic.ogg', load);
   jumpMan = new Character();
   eggs = new Egg();
+  score = new ScoreBoard();
 }
 
 function draw(){
@@ -35,8 +37,11 @@ function draw(){
     move();
     jumpMan.move();
     jumpMan.show();
-    jumpMan.grab(eggs);
+    if(jumpMan.grab(eggs)){
+      score.increase();
+    }
     eggs.show();
+    score.show();
   }
 }
 
