@@ -1,15 +1,14 @@
 var loading = true;
 var jumpMan;
+var platform = [];
 var song;
-var eggs; // = [];
+var eggs = [];
 var score;
 
-// function preload(){
-//
-// }
+
 
 function load() {
-  //song.loop();
+  song.loop();
   loading = false;
 }
 
@@ -23,7 +22,10 @@ function setup() {
   var canvas = createCanvas(600, 600);
   song = loadSound('Music/RunningMusic.ogg', load);
   jumpMan = new Character();
-  eggs = new Egg();
+  // platform = new Platform(width / 2 - 50, height - 50, 100);
+  for(var i = 0; i<20; i++){
+    eggs.push(new Egg(random(5, width-5), random(5, height-5)));
+  }
   score = new ScoreBoard();
 
   var x = (windowWidth - width) / 2;
@@ -41,10 +43,15 @@ function draw() {
     move();
     jumpMan.move();
     jumpMan.show();
-    if (jumpMan.grab(eggs)) {
-      score.increase();
+    for(var i=0; i<eggs.length; i++){
+      if (jumpMan.grab(eggs[i])) {
+        score.increase();
+      }
+      eggs[i].show();
     }
-    eggs.show();
+    for (var i = 0; i < platform.length; i++) {
+      platform[i].show();
+    }
     score.show();
   }
 }
@@ -63,4 +70,8 @@ function keyPressed() {
   if (key === ' ') {
     jumpMan.jump();
   }
+}
+
+function mouseClicked() {
+  platform.push(new Platform(mouseX - 50, mouseY, 100))
 }

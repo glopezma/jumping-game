@@ -6,7 +6,12 @@ function ScoreBoard() {
 
 ScoreBoard.prototype.show = function() {
   textAlign(CENTER);
-  text(this.value, this.x, this.y);
+  strokeWeight(1);
+  if (this.value === eggs.length*100) {
+    text('Congradulations!', width/2, height/2);
+  } else {
+    text(this.value, this.x, this.y);
+  }
 }
 
 ScoreBoard.prototype.increase = function() {
