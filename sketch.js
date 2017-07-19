@@ -19,7 +19,7 @@ function loadingScreen() {
 }
 
 function setup() {
-  var canvas = createCanvas(600, 600);
+  var canvas = createCanvas(1200, 900);
   song = loadSound('Music/RunningMusic.ogg', load);
   jumpMan = new Character();
   // platform = new Platform(width / 2 - 50, height - 50, 100);
