@@ -7,3 +7,6 @@ movement:
 Jump: Spacebar
 left: LEFT_ARROW
 right: RIGHT_ARROW
+
+DEMO
+https://codepen.io/glopezma/pen/XgvVBj?editors=1010
